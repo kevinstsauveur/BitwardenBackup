@@ -1,20 +1,22 @@
 # BitwardenBackup
 
-This project contains a Powershell script that export Bitwarden passwords to a KeePass database as well as json encrypted format.
+This project contains a Powershell script that exports Bitwarden passwords to a KeePass database as well as json encrypted format.
+
+For more details to how the data is stored, see [KeePass project](https://keepass.info/), [Bitwarden encrypted json]https://bitwarden.com/help/article/encrypted-export/) and windows [SecureString](https://docs.microsoft.com/en-us/dotnet/api/system.security.securestring?view=net-5.0#how-secure-is-securestring).
 
 ## Dependencies (already included)
-* (Bitwarden CLI)[https://bitwarden.com/help/article/cli/#download--install]
-* (KeePass)[https://keepass.info/download.html]
-* (KPScript)[https://keepass.info/plugins.html]
-* (Sdelete)[https://docs.microsoft.com/en-us/sysinternals/downloads/sdelete]
+* [Bitwarden CLI](https://bitwarden.com/help/article/cli/#download--install)
+* [KeePass](https://keepass.info/download.html)
+* [KPScript](https://keepass.info/plugins.html)
+* [Sdelete](https://docs.microsoft.com/en-us/sysinternals/downloads/sdelete)
 
 ## Usage
 
-Simply run the Export.ps1 script every time you want to backup your vault. It creates a new kdbx (KeePass) and a new json (encrypted bitwarden's json) each time you run the script `Export.ps1`.
+Simply run the `Export.ps1` script every time you want to backup your vault. It creates a new `kdbx` (KeePass Vault) and a new `json` (encrypted bitwarden's json) each time you run the script `Export.ps1`.
 
-At first execution, it will ask you for your credentials. Your password is stored in the `Bitwarden.cred` file and it contains your username and password. The password is stored in an encrypted form and can only be decrypted by your user on your computer.
+At first, it will ask you for your credentials. Your password is stored in the `Bitwarden.cred` file and it contains your username and password. Your master password will be stored on your hardd rive in an encrypted form and can only be decrypted by your user on your windows computer.
 
-The files are saved in the parent folder.
+The generated files are saved at the same level as Export.
 
 ## Auto execution
 This script can be started automatically with the Windows task scheduler each time you connect to your session.
@@ -26,8 +28,9 @@ The script keeps the files this way:
 2. One file per day for the last week to the last two week
 3. One file per week if it's not the last two weeks
 4. One file per month if it's not the last two months
+5. All the other files are deleted
 
-If you're a visual person, here's an example of the file you may see:
+If you're a visual person, here's an example of the files Lifecycle:
 ```
 Bitwarden_2020-10-31_1250.kdbx //Once a month
 Bitwarden_2020-11-30_0944.kdbx
