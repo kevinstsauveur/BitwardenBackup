@@ -2,7 +2,7 @@
 
 This project contains a Powershell script that exports Bitwarden passwords to a KeePass database as well as json encrypted format.
 
-For more details to how the data is stored, see [KeePass project](https://keepass.info/), [Bitwarden encrypted json]https://bitwarden.com/help/article/encrypted-export/) and windows [SecureString](https://docs.microsoft.com/en-us/dotnet/api/system.security.securestring?view=net-5.0#how-secure-is-securestring).
+For more details to how the data is stored, see [KeePass project](https://keepass.info/), [Bitwarden encrypted json](https://bitwarden.com/help/article/encrypted-export/) and windows [SecureString](https://docs.microsoft.com/en-us/dotnet/api/system.security.securestring?view=net-5.0#how-secure-is-securestring).
 
 ## Dependencies (already included)
 * [Bitwarden CLI](https://bitwarden.com/help/article/cli/#download--install)
@@ -16,7 +16,7 @@ Simply run the `Export.ps1` script every time you want to backup your vault. It 
 
 At first, it will ask you for your credentials. Your password is stored in the `Bitwarden.cred` file and it contains your username and password. Your master password will be stored on your hardd rive in an encrypted form and can only be decrypted by your user on your windows computer.
 
-The generated files are saved at the same level as Export.
+The generated files are saved at the same level as `Export`.
 
 ## Auto execution
 This script can be started automatically with the Windows task scheduler each time you connect to your session.
