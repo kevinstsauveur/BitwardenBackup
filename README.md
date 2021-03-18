@@ -16,7 +16,11 @@ Simply run the `Export.ps1` script every time you want to backup your vault. It 
 
 At first, it will ask you for your credentials. Your password is stored in the `Bitwarden.cred` file and it contains your username and password. Your master password will be stored on your hardd rive in an encrypted form and can only be decrypted by your user on your windows computer.
 
-The generated files are saved at the same level as `Export`.
+The generated encrypted files are saved at the same level as `Export`.
+
+:warning: This script temporally store your passwords (but not you master password) for a really short period of time in a `json` file on your hard drive in `Export/tmp/`. This script securely delete this temp file by overwriting it 5 times to prevent a recovery tool to be able to recover anything. Even if this script securely delete the file, I encourage you to perform a full disk encryption.
+
+:warning: To prevent unauthorised access to this temporary file for moment it's in your computer, you can use [Windows controlled folder access](https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/controlled-folders) and [only authorize requested applications](https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/customize-controlled-folders) and protect the directory where you store this script. This will add an additionnal layer of security to protect your passwords.
 
 ## Auto execution
 This script can be started automatically with the Windows task scheduler each time you connect to your session.
