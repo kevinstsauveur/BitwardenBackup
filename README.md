@@ -25,6 +25,22 @@ The generated encrypted files are saved at the same level as `Export`.
 ## Auto execution
 This script can be started automatically with the Windows task scheduler each time you connect to your session.
 
+## KeePass
+
+### Encryption
+The provided KeyPass Vault use this encryption parameter:
+* Database file encryption alhorithm: AES/Rjndael (256-bit key, FIPS 197)
+
+### Key transformation
+The provided KeePass Vault may not use the perfect Key transformation parameters that fits your needs. The provided one is created with these parameters:
+* Key derivation function: Argon2d
+* Iterations: 25
+* Memory: 128 MB
+* Parallelism: 2
+It generally takes ~2s to open/save KeePass.
+
+There's more details the way these parameters impact the security on [KeePass's website in the Protection against Dictionary Attacks section](https://keepass.info/help/base/security.html).
+
 ## File Lifecycle and autodelete
 
 The script keeps the files this way:

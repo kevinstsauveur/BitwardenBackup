@@ -36,7 +36,7 @@ if([System.IO.File]::Exists(".\Bitwarden.cred")){
 
     #Create new file "Empty.kdbx" and change password
     Copy-Item .\Empty.kdbx -Destination $outputFileKeepass -force
-    & $LibKPScript /KPScript -c:ChangeMasterKey $outputFileKeepass -pw:empty -newpw:$credentials.GetNetworkCredential().Password
+    & $LibKPScript /KPScript -c:ChangeMasterKey $outputFileKeepass -pw:. -newpw:$credentials.GetNetworkCredential().Password
 
     #Export data to temporary unencrypted json file
 	New-Item -ItemType Directory -Force -Path .\tmp
