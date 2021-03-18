@@ -48,9 +48,9 @@ if([System.IO.File]::Exists(".\Bitwarden.cred")){
     & $LibKPScript /KPScript -c:Import $outputFileKeepass -pw:$credentials.GetNetworkCredential().Password -Format:"Bitwarden JSON" -File:$tempfile
 
     #Erase temp json from disk (secure erase for HDD)
-		#$LibSdelete -p 3 -r -s -nobanner .\tmp
+		$LibSdelete -p 5 -r -s -nobanner .\tmp
 	#If you have an SSD it's useless so erase normaly instead
-		Remove-Item '.\tmp' -Recurse
+		#Remove-Item '.\tmp' -Recurse
 	
 	#Flush temp var
 	$session = $null
