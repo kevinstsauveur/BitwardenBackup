@@ -24,6 +24,9 @@ if([System.IO.File]::Exists(".\Bitwarden.cred")){
     $credentials = Import-CliXml -Path ".\Bitwarden.cred"
 
     $session = & $LibBitwardencli unlock $credentials.GetNetworkCredential().Password --raw
+	
+	#Force client synchronisation
+	& $LibBitwardencli sync --session $session
 
     #==========  Encrypted export json ========== 
     $outputFilejson = "..\Bitwarden_" + $date.ToString() + ".json"
