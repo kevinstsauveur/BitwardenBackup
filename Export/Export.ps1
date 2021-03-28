@@ -2,8 +2,6 @@ $LibBitwardencli = "${PSScriptRoot}\lib\Bitwardencli\bw.exe"
 $LibKPScript = "${PSScriptRoot}\lib\KeePass-2.47\KPScript.exe"
 $LibSdelete = "${PSScriptRoot}\lib\sdelete\sdelete64.exe"
 
-Import-Module .\src\DeleteItems\deleteItems.psm1
-
 #Saving credentials
 if(-not [System.IO.File]::Exists(".\Bitwarden.cred")){
     & $LibBitwardencli logout
@@ -18,7 +16,11 @@ if(-not [System.IO.File]::Exists(".\Bitwarden.cred")){
 
 
 if([System.IO.File]::Exists(".\Bitwarden.cred")){
+    #Encrypt files
+    Import-Module .\src\gpg\gpg.psm1
+    
     $date = Get-Date -Format "yyyy-MM-dd_HHmm"
+    $PGPRecipient = "email@recipient.com"
 
     #Import credentials
     $credentials = Import-CliXml -Path ".\Bitwarden.cred"
@@ -29,12 +31,15 @@ if([System.IO.File]::Exists(".\Bitwarden.cred")){
 	& $LibBitwardencli sync --session $session
 
     #==========  Encrypted export json ========== 
-    $outputFilejson = "..\Bitwarden_" + $date.ToString() + ".json"
+    $outputFilejson = ".\tmp\Bitwarden_" + $date.ToString() + ".json"
+	$outputFilejsonPGP = "..\Bitwarden_" + $date.ToString() + ".json.gpg"
 
     & $LibBitwardencli export $credentials.GetNetworkCredential().Password --output $outputFilejson --format encrypted_json --session $session
+    gpgItem $outputFilejson $outputFilejsonPGP $PGPRecipient
 
     #========== Encrypted export Keepass ========== 
-    $outputFileKeepass = "..\Bitwarden_" + $date.ToString() + ".kdbx"
+    $outputFileKeepass = ".\tmp\Bitwarden_" + $date.ToString() + ".kdbx"
+    $outputFileKeepassPGP = "..\Bitwarden_" + $date.ToString() + ".kdbx.gpg"
     $tempfile = "./tmp/tmp.json"
 
     #Create new file "Empty.kdbx" and change password
@@ -50,6 +55,8 @@ if([System.IO.File]::Exists(".\Bitwarden.cred")){
     #Import data from json to keepass
     & $LibKPScript /KPScript -c:Import $outputFileKeepass -pw:$credentials.GetNetworkCredential().Password -Format:"Bitwarden JSON" -File:$tempfile
 
+    gpgItem $outputFileKeepass $outputFileKeepassPGP $PGPRecipient
+
     #Erase temp json from disk (secure erase for HDD)
 		& $LibSdelete -p 5 -r -s -nobanner .\tmp
 	#If you have an SSD it's useless so erase normaly instead
@@ -63,6 +70,8 @@ if([System.IO.File]::Exists(".\Bitwarden.cred")){
 [string]$SavePath = (Get-Item ../).FullName;
 
 #Delete files
-deleteItems $SavePath 'json'
-deleteItems $SavePath 'kdbx'
+Import-Module .\src\DeleteItems\deleteItems.psm1
+deleteItems $SavePath 'json.gpg'
+deleteItems $SavePath 'kdbx.gpg'
+
 exit

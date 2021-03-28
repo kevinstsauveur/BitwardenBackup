@@ -13,7 +13,7 @@ function deleteItems{
         [Parameter(Mandatory=$true)]
 		[string]$path,
 		[Parameter(Mandatory=$true)]
-		[string]$extension = "json"
+		[string]$extension = "kdbx.gpg"
     )
 	
     $fichier = "Bitwarden_[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]_[0-9][0-9][0-9][0-9].${extension}"
