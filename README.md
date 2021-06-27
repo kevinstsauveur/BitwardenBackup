@@ -34,10 +34,10 @@ The provided KeyPass Vault use this encryption parameter:
 ### Key transformation
 The provided KeePass Vault may not use the perfect Key transformation parameters that fits your needs. The provided one is created with these parameters:
 * Key derivation function: Argon2d
-* Iterations: 25
-* Memory: 128 MB
-* Parallelism: 2
-It generally takes ~2s to open/save KeePass.
+* Iterations: 10
+* Memory: 256 MB
+* Parallelism: 4
+It generally takes ~1s to open/save KeePass.
 
 There's more details the way these parameters impact the security on [KeePass's website in the Protection against Dictionary Attacks section](https://keepass.info/help/base/security.html).
 
