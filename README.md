@@ -29,13 +29,13 @@ This script can be started automatically with the Windows task scheduler each ti
 
 ### Encryption
 The provided KeyPass Vault use this encryption parameter:
-* Database file encryption alhorithm: AES/Rjndael (256-bit key, FIPS 197)
+* Database file encryption alhorithm: ChaCha20 (256-bit key, RFC 7539)
 
 ### Key transformation
 The provided KeePass Vault may not use the perfect Key transformation parameters that fits your needs. The provided one is created with these parameters:
 * Key derivation function: Argon2d
 * Iterations: 10
-* Memory: 256 MB
+* Memory: 512 MB
 * Parallelism: 4
 It generally takes ~1s to open/save KeePass.
 
