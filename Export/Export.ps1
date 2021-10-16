@@ -7,13 +7,13 @@ Import-Module .\src\DeleteItems\deleteItems.psm1
 #Saving credentials
 if(-not [System.IO.File]::Exists(".\Bitwarden.cred")){
     & $LibBitwardencli logout
-    $credentials = Get-Credential
-    $credentials | Export-CliXml -Path ".\Bitwarden.cred"
-	
-    $codetype = Read-Host -Prompt 'Two Step Login - Please enter numeric value 0) Authenticator 1) Email 3) Yubikey'
-    $code = Read-Host -Prompt 'Please enter code'
-    & $LibBitwardencli login  $credentials.UserName $credentials.GetNetworkCredential().Password --method $codetype --code $code
-    & $LibBitwardencli lock
+    & $LibBitwardencli login --apikey
+	& $LibBitwardencli lock
+
+    $Bitwarden_password = Read-Host -Prompt 'Please enter your master password'
+    $Bitwarden_password_SecureString = ConvertTo-SecureString $Bitwarden_password -AsPlainText -Force
+    $Bitwarden = New-Object System.Management.Automation.PSCredential (' ', $Bitwarden_password_SecureString)
+    $Bitwarden | Export-CliXml -Path ".\Bitwarden.cred"
 }
 
 
