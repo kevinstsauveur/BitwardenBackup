@@ -1,5 +1,5 @@
 $LibBitwardencli = "${PSScriptRoot}\lib\Bitwardencli\bw.exe"
-$LibKPScript = "${PSScriptRoot}\lib\KeePass-2.50\KPScript.exe"
+$LibKPScript = "${PSScriptRoot}\lib\KeePass\KPScript.exe"
 $LibSdelete = "${PSScriptRoot}\lib\sdelete\sdelete64.exe"
 
 Import-Module .\src\DeleteItems\deleteItems.psm1
