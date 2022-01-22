@@ -1,5 +1,5 @@
 $LibBitwardencli = "${PSScriptRoot}\lib\Bitwardencli\bw.exe"
-$LibKPScript = "${PSScriptRoot}\lib\KeePass-2.48.1\KPScript.exe"
+$LibKPScript = "${PSScriptRoot}\lib\KeePass-2.50\KPScript.exe"
 $LibSdelete = "${PSScriptRoot}\lib\sdelete\sdelete64.exe"
 
 #Saving credentials
