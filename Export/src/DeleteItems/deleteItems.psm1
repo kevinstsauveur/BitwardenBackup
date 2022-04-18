@@ -1,6 +1,6 @@
 $todaysdate = Get-Date -Format "yyyy-MM-dd"
 
-$logfilepath = "./DeleteItems.log"
+$logfilepath = "./Export/DeletedItems.log"
 
 function WriteToLogFile ($message)
 {
