@@ -1,26 +1,66 @@
-# BitwardenBackup
+<p align="center">
+    <img src="../../assets/logo.png" />
+    <br/><br/>
+    <a href="https://github.com/kevinstsauveur/bitwardenbackup/releases/latest">
+        <img src="https://img.shields.io/github/v/release/kevinstsauveur/bitwardenbackup.svg" />
+    </a>
+    <a href="https://www.codefactor.io/repository/github/kevinstsauveur/bitwardenbackup/overview/main">
+        <img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/kevinstsauveur/bitwardenbackup">
+    </a>
+    <a href="https://github.com/kevinstsauveur/BitwardenBackup/blob/main/LICENSE">
+        <img alt="GitHub" src="https://img.shields.io/github/license/kevinstsauveur/bitwardenbackup?color=orange">
+    </a>
+</p>
+
+---
+
+# Summary
 
 This project contains a Powershell script that exports Bitwarden passwords to a KeePass database as well as json encrypted format.
 
 For more details on how the data is stored, see [KeePass](https://keepass.info/), [Bitwarden encrypted json](https://bitwarden.com/help/article/encrypted-export/) and Windows [SecureString](https://docs.microsoft.com/en-us/dotnet/api/system.security.securestring?view=net-5.0).
 
-## Dependencies (already included)
+## Dependencies
 * [Bitwarden CLI](https://bitwarden.com/help/article/cli/#download--install)
 * [KeePass](https://keepass.info/download.html)
 * [KPScript](https://keepass.info/plugins.html)
 * [Sdelete](https://docs.microsoft.com/en-us/sysinternals/downloads/sdelete)
 
+## Installation
+
+The Releases contains everything that’s needed. There's no need to do those steps. If you would like to do it yourself, feel free to follow those below.
+
+The directory we will need to extract files are all in `./Export/lib/`.
+
+```bash
+└───Export
+    ├───lib
+    │   ├───Bitwardencli
+    │   ├───KeePass
+    │   └───sdelete
+    └───src
+        └───deleteItems
+```
+
+
+1. Download and extract the latest version of Bitwardencli, `bw.exe` must be in `./Export/lib/Bitwardencli`. I encourage you to validate the [checksum](https://github.com/bitwarden/cli/releases) of the file.
+
+2. Download and extract the latest version of KeePass (.zip portable version), `KeePass.exe` must be in `./Export/lib/KeePass`. I encourage you to validate the [signature](https://keepass.info/integrity.html) of the file.
+
+3. Download and extract the latest version of KPScript for Keepass, `KPScript.exe` must be in `./Export/lib/KeePass`. I encourage you to validate the [signature](https://keepass.info/integrity_etc.html) of the file.
+
+4. Download and extract the latest version of sdelete, `sdelete64.exe` must be in `./Export/lib/KeePass`.
+
+
 ## Usage
 
 Simply run the `Export.ps1` script every time you want to backup your vault. It creates a new `kdbx` (KeePass Vault) and a new `json` (encrypted bitwarden's json) each time you run the script `Export.ps1`.
 
-At first, it will ask you for your Bitwarden credentials. It will be stored in `Bitwarden.cred` and it contains your username and password. Your master password will be stored in an encrypted form and can only be decrypted by your user on your Windows computer.
+At first, it will ask you for your Bitwarden credentials. You will need your [API Key](https://bitwarden.com/help/personal-api-key/) that you can find in your online vault's settings. Those are your OAuth 2.0 Client Credentials that will be used to authenticate. Your client_id and your client_secret will be needed. Once those are validated, your master password will be asked.
 
 The generated encrypted files are saved at the same level as `Export`.
 
-:warning: This script temporally stores the content of your vault for a really short period of time in a `json` file in `Export/tmp/`. This script securely delete this temp file by overwriting it 5 times to prevent a recovery tool to be able to recover anything. Even if this script securely deletes the file, I encourage you to perform a full disk encryption.
-
-:warning: To prevent unauthorized access to this temporary file for the moment it's in your computer, you can use [Windows controlled folder access](https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/controlled-folders) and [only authorize requested applications](https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/customize-controlled-folders) and protect the directory where you store this script. This will add an additional layer of security to protect your passwords.
+:warning: Be sure that you're using a secure trusted computer while doing a backup of your passwords.
 
 ## Auto execution
 This script can be started automatically with the Windows task scheduler each time you connect to your session.
@@ -43,34 +83,18 @@ There's more details the way these parameters impact the security on [KeePass's 
 
 ## File Lifecycle and autodelete
 
-The script keeps the files this way:
-1. One file per day
-2. One file per day for the last week to the last two week
-3. One file per week if it's not the last two weeks
-4. One file per month if it's not the last two months
-5. All the other files are deleted
+The following intervals are used and they each have a maximum number of files that will be kept for each.
 
-If you're a visual person, here's an example of the files Lifecycle:
-```
-Bitwarden_2020-10-31_1250.kdbx //Once a month
-Bitwarden_2020-11-30_0944.kdbx
-Bitwarden_2020-12-31_0825.kdbx
-Bitwarden_2021-01-31_0450.kdbx
-Bitwarden_2021-02-03_1210.kdbx //Once a week for the last two months
-Bitwarden_2021-02-10_1755.kdbx
-Bitwarden_2021-02-17_0900.kdbx
-Bitwarden_2021-02-24_2134.kdbx
-Bitwarden_2021-03-03_1210.kdbx //Once a day for the last two weeks
-Bitwarden_2021-03-04_1050.kdbx
-Bitwarden_2021-03-07_1954.kdbx
-Bitwarden_2021-03-08_1720.kdbx
-Bitwarden_2021-03-09_1540.kdbx
-Bitwarden_2021-03-10_2015.kdbx
-Bitwarden_2021-03-11_0740.kdbx
-Bitwarden_2021-03-12_0902.kdbx
-Bitwarden_2021-03-13_1129.kdbx
-Bitwarden_2021-03-14_1153.kdbx
-Bitwarden_2021-03-15_1226.kdbx
-Bitwarden_2021-03-16_1254.kdbx
-Bitwarden_2021-03-17_1903.kdbx //Today
-```
+**1 Hour**
+For the first day, the youngest version of every day is kept.
+
+**2 week**
+For the last two week, one file per day is kept.
+
+**2 month**
+For the last two month, one file per week is kept.
+
+**>2 month**
+For the files that are older than two months, the youngest version of every month is kept.
+
+This means that there is only one version in each interval and as files age they will be deleted unless when the interval they are entering is empty.
