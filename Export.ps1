@@ -112,3 +112,5 @@ function Export {
     Write-Output 'An error occured during the backup process.'
   }
 }
+
+Export
