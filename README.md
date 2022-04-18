@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="../assets/logo.png" />
+    <img src="../../assets/logo.png" />
     <br/><br/>
     <a href="https://github.com/kevinstsauveur/BitwardenBackup/blob/main/LICENSE">
         <img src="https://img.shields.io/github/license/kevinstsauveur/BitwardenBackup?color=blue" />
