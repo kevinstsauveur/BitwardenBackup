@@ -1,4 +1,14 @@
-# BitwardenBackup
+<p align="center">
+    <img src="../assets/logo.png" />
+    <br/><br/>
+    <a href="https://github.com/kevinstsauveur/BitwardenBackup/blob/main/LICENSE">
+        <img src="https://img.shields.io/github/license/kevinstsauveur/BitwardenBackup?color=blue" />
+    </a>
+</p>
+
+---
+
+# Summary
 
 This project contains a Powershell script that exports Bitwarden passwords to a KeePass database as well as json encrypted format.
 
