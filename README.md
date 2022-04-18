@@ -5,10 +5,10 @@
         <img src="https://img.shields.io/github/v/release/kevinstsauveur/bitwardenbackup.svg" />
     </a>
     <a href="https://www.codefactor.io/repository/github/kevinstsauveur/bitwardenbackup/overview/main">
-        <img src="https://www.codefactor.io/repository/github/kevinstsauveur/bitwardenbackup/badge/main" alt="CodeFactor" />
+        <img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/kevinstsauveur/bitwardenbackup">
     </a>
     <a href="https://github.com/kevinstsauveur/BitwardenBackup/blob/main/LICENSE">
-        <img alt="GitHub" src="https://img.shields.io/github/license/kevinstsauveur/bitwardenbackup">
+        <img alt="GitHub" src="https://img.shields.io/github/license/kevinstsauveur/bitwardenbackup?color=orange">
     </a>
 </p>
 
