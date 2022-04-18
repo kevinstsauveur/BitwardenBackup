@@ -1,8 +1,14 @@
 <p align="center">
     <img src="../../assets/logo.png" />
     <br/><br/>
+    <a href="https://github.com/kevinstsauveur/bitwardenbackup/releases/latest">
+        <img src="https://img.shields.io/github/v/release/kevinstsauveur/bitwardenbackup.svg" />
+    </a>
+    <a href="https://www.codefactor.io/repository/github/kevinstsauveur/bitwardenbackup/overview/main">
+        <img src="https://www.codefactor.io/repository/github/kevinstsauveur/bitwardenbackup/badge/main" alt="CodeFactor" />
+    </a>
     <a href="https://github.com/kevinstsauveur/BitwardenBackup/blob/main/LICENSE">
-        <img src="https://img.shields.io/github/license/kevinstsauveur/BitwardenBackup?color=blue" />
+        <img alt="GitHub" src="https://img.shields.io/github/license/kevinstsauveur/bitwardenbackup">
     </a>
 </p>
 
