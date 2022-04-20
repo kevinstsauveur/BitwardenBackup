@@ -14,6 +14,9 @@
 
 ---
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d0b0f3a743624181822f90e57f1d68bf)](https://app.codacy.com/gh/kevinstsauveur/BitwardenBackup?utm_source=github.com&utm_medium=referral&utm_content=kevinstsauveur/BitwardenBackup&utm_campaign=Badge_Grade_Settings)
+
+
 # Summary
 
 This project contains a Powershell script that exports Bitwarden passwords to a KeePass database as well as json encrypted format.
