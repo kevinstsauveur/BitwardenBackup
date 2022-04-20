@@ -13,7 +13,7 @@ function deleteItems{
         [Parameter(Mandatory=$true)]
 		[string]$path,
 		[Parameter(Mandatory=$true)]
-		[string]$extension = "json"
+		[string]$extension
     )
 	
     $fichier = "Bitwarden_[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]_[0-9][0-9][0-9][0-9].${extension}"
@@ -84,9 +84,9 @@ function deleteItems{
 		if(($currentMonth -ne $tempCurrentMonthNumber) -and ($currentMonth-1 -ne $tempCurrentMonthNumber)){ #Si c'est pas le mois actuel ou le mois dernier, supprimer s'il y a plus d'un fichier par mois
             if($countMonth -gt 1){
                 Remove-Item $filename -Recurse
-                WriteToLogFile "Delete $filename : Mois #$currentMonthNumber : Compté $countMonth fois"
+                WriteToLogFile "Delete $filename : Mois #$currentMonthNumber : Comptï¿½ $countMonth fois"
             }
-        }Elseif(($currentWeek -ne $tempCurrentWeekNumber) -and ($currentWeek-1 -ne $tempCurrentWeekNumber)){ #Si c'est pas la semaine actuelle ou la semaine passé
+        }Elseif(($currentWeek -ne $tempCurrentWeekNumber) -and ($currentWeek-1 -ne $tempCurrentWeekNumber)){ #Si c'est pas la semaine actuelle ou la semaine passï¿½
             if($countWeek -gt 1){ #supprimer s'il y a plus d'un fichier par semaine
                 Remove-Item $filename -Recurse
                 $bool=$tempCurrentWeekNumber-1
