@@ -32,9 +32,8 @@ function Export {
         & $LibBitwardencli lock
         clear
 
-        $Bitwarden_password = Read-Host -Prompt 'Please enter your master password'
+        $Bitwarden_password_SecureString = Read-Host -Prompt 'Please enter your master password' -AsSecureString
         clear
-        $Bitwarden_password_SecureString = ConvertTo-SecureString $Bitwarden_password -AsPlainText -Force
         $Bitwarden = New-Object System.Management.Automation.PSCredential (' ', $Bitwarden_password_SecureString)
         $Bitwarden | Export-CliXml -Path ".\\Export\\Bitwarden.cred"
     }
