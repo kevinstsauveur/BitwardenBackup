@@ -2,7 +2,7 @@
 name: Feature request
 about: Suggest an idea for BitwardenBackup
 title: ""
-labels: enhancement
+labels: type:enhancement
 assignees: ""
 ---
 
