@@ -26,10 +26,10 @@ For more details on how the data is stored, see [KeePass](https://keepass.info/)
 
 ## Dependencies
 
-- [Bitwarden CLI](https://bitwarden.com/help/article/cli/#download--install)
-- [KeePass](https://keepass.info/download.html)
-- [KPScript](https://keepass.info/plugins.html)
-- [Sdelete](https://docs.microsoft.com/en-us/sysinternals/downloads/sdelete)
+-   [Bitwarden CLI](https://bitwarden.com/help/article/cli/#download--install)
+-   [KeePass](https://keepass.info/download.html)
+-   [KPScript](https://keepass.info/plugins.html)
+-   [Sdelete](https://docs.microsoft.com/en-us/sysinternals/downloads/sdelete)
 
 ## Installation
 
@@ -47,13 +47,13 @@ The directory we will need to extract files are all in `./Export/lib/`.
         └───deleteItems
 ```
 
-1. Download and extract the latest version of Bitwardencli, `bw.exe` must be in `./Export/lib/Bitwardencli`. I encourage you to validate the [checksum](https://github.com/bitwarden/cli/releases) of the file.
+1.  Download and extract the latest version of Bitwardencli, `bw.exe` must be in `./Export/lib/Bitwardencli`. I encourage you to validate the [checksum](https://github.com/bitwarden/cli/releases) of the file.
 
-2. Download and extract the latest version of KeePass (.zip portable version), `KeePass.exe` must be in `./Export/lib/KeePass`. I encourage you to validate the [signature](https://keepass.info/integrity.html) of the file.
+2.  Download and extract the latest version of KeePass (.zip portable version), `KeePass.exe` must be in `./Export/lib/KeePass`. I encourage you to validate the [signature](https://keepass.info/integrity.html) of the file.
 
-3. Download and extract the latest version of KPScript for Keepass, `KPScript.exe` must be in `./Export/lib/KeePass`. I encourage you to validate the [signature](https://keepass.info/integrity_etc.html) of the file.
+3.  Download and extract the latest version of KPScript for Keepass, `KPScript.exe` must be in `./Export/lib/KeePass`. I encourage you to validate the [signature](https://keepass.info/integrity_etc.html) of the file.
 
-4. Download and extract the latest version of sdelete, `sdelete64.exe` must be in `./Export/lib/KeePass`.
+4.  Download and extract the latest version of sdelete, `sdelete64.exe` must be in `./Export/lib/KeePass`.
 
 ## Usage
 
@@ -75,17 +75,18 @@ This script can be started automatically with the Windows task scheduler each ti
 
 The provided KeyPass Vault use this encryption parameter:
 
-- Database file encryption algorithm: ChaCha20 (256-bit key, RFC 7539)
+-   Database file encryption algorithm: ChaCha20 (256-bit key, RFC 7539)
 
 ### Key transformation
 
-The provided KeePass Vault may not use the perfect Key transformation parameters that fits your needs. The provided one is created with these parameters:
+The provided KeePass Vault may not use the perfect Key transformation parameters that fits your needs. The provided one is created with these following parameters:
 
-- Key derivation function: Argon2d
-- Iterations: 10
-- Memory: 512 MB
-- Parallelism: 4
-  It generally takes ~1s to open/save KeePass.
+-   Key derivation function:   Argon2d
+-   Iterations:   10
+-   Memory:   512 MB
+-   Parallelism:   4
+
+It generally takes ~1s to open/save KeePass.
 
 There's more details the way these parameters impact the security on [KeePass's website in the Protection against Dictionary Attacks section](https://keepass.info/help/base/security.html).
 
