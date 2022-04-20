@@ -13,7 +13,6 @@
     <a href="https://www.codacy.com/gh/kevinstsauveur/BitwardenBackup/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kevinstsauveur/BitwardenBackup&amp;utm_campaign=Badge_Grade">
         <img alt="GitHub" src="https://app.codacy.com/project/badge/Grade/1a1c0864204e463592bcb2cc72f625ba">
     </a>
-    <img alt="GitHub Workflow Status (branch)" src="https://img.shields.io/github/workflow/status/kevinstsauveur/BitwardenBackup/PSScriptAnalyzer/main">
 </p>
 
 ---
