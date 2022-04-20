@@ -1,5 +1,7 @@
 <p align="center">
-    <img src="../assets/logo.png" href="https://github.com/kevinstsauveur/BitwardenBackup"/>
+    <a href="https://github.com/kevinstsauveur/BitwardenBackup">
+        <img src="../assets/logo.png"/>
+    </a>
     <br/><br/>
     <a href="https://github.com/kevinstsauveur/bitwardenbackup/releases/latest">
         <img src="https://img.shields.io/github/v/release/kevinstsauveur/bitwardenbackup.svg" />
