@@ -6,14 +6,14 @@
     <a href="https://github.com/kevinstsauveur/bitwardenbackup/releases/latest">
         <img src="https://img.shields.io/github/v/release/kevinstsauveur/bitwardenbackup.svg" />
     </a>
-    <a href="https://www.codefactor.io/repository/github/kevinstsauveur/bitwardenbackup/overview/main">
-        <img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/kevinstsauveur/bitwardenbackup">
+    <a href="https://github.com/kevinstsauveur/BitwardenBackup/actions/workflows/powershell.yml">
+        <img alt="GitHub Workflow Status (branch)" src="https://img.shields.io/github/workflow/status/kevinstsauveur/bitwardenbackup/PSScriptAnalyzer/main?label=PSScriptAnalyzer">
     </a>
     <a href="https://github.com/kevinstsauveur/BitwardenBackup/blob/main/LICENSE">
-        <img alt="GitHub" src="https://img.shields.io/github/license/kevinstsauveur/bitwardenbackup?color=orange">
+        <img alt="GitHub" src="https://img.shields.io/github/license/kevinstsauveur/bitwardenbackup?color=blue">
     </a>
     <a href="https://www.codacy.com/gh/kevinstsauveur/BitwardenBackup/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kevinstsauveur/BitwardenBackup&amp;utm_campaign=Badge_Grade">
-        <img alt="GitHub" src="https://app.codacy.com/project/badge/Grade/1a1c0864204e463592bcb2cc72f625ba">
+        <img alt="Codacy branch grade" src="https://img.shields.io/codacy/grade/1a1c0864204e463592bcb2cc72f625ba/main?color=succes">
     </a>
 </p>
 
