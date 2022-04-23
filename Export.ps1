@@ -16,9 +16,9 @@ function Export {
     [Parameter(Mandatory=$false,
             ValueFromPipeline=$true,
             ValueFromPipelineByPropertyName=$true,
-            HelpMessage="Path of where the backup should be created. If not specified, the backup will be created in the current directory.")]
+            HelpMessage="Password to use for the backup. If not specified, the backup will be created with your master password.")]
     [Alias("p")]
-    [string]
+    [Security.SecureString]
     $password
   )
 
@@ -32,9 +32,8 @@ function Export {
         & $LibBitwardencli lock
         clear
 
-        $Bitwarden_password = Read-Host -Prompt 'Please enter your master password'
+        $Bitwarden_password_SecureString = Read-Host -Prompt 'Please enter your master password' -AsSecureString
         clear
-        $Bitwarden_password_SecureString = ConvertTo-SecureString $Bitwarden_password -AsPlainText -Force
         $Bitwarden = New-Object System.Management.Automation.PSCredential (' ', $Bitwarden_password_SecureString)
         $Bitwarden | Export-CliXml -Path ".\\Export\\Bitwarden.cred"
     }
@@ -67,25 +66,21 @@ function Export {
 
         #Create new file "Empty.kdbx" and change password
         Copy-Item .\Export\Empty.kdbx -Destination $outputFileKeepass -force
-        if ($null -ne $password) {
-          & $LibKPScript /KPScript -c:ChangeMasterKey $outputFileKeepass -pw:. -newpw:$password
+        if ('' -ne [Net.NetworkCredential]::new('', $password).Password) {
+          & $LibKPScript /KPScript -c:ChangeMasterKey $outputFileKeepass -pw:. -newpw:([Net.NetworkCredential]::new('', $password).Password)
         }else{
           & $LibKPScript /KPScript -c:ChangeMasterKey $outputFileKeepass -pw:. -newpw:$credentials.GetNetworkCredential().Password
         }
 
         #Export data to temporary unencrypted json file
         New-Item -ItemType Directory -Force -Path .\Export\tmp
-        if ($null -ne $password) {
-          & $LibBitwardencli export $password --output $tempfile --format json --session $session
-        }else{
-          & $LibBitwardencli export $credentials.GetNetworkCredential().Password --output $tempfile --format json --session $session
-        }
-        
+        & $LibBitwardencli export --output $tempfile --format json --session $session
+       
         & $LibBitwardencli lock
 
         #Import data from json to keepass
-        if ($null -ne $password) {
-          & $LibKPScript /KPScript -c:Import $outputFileKeepass -pw:$password -Format:"Bitwarden JSON" -File:$tempfile
+        if ('' -ne [Net.NetworkCredential]::new('', $password).Password) {
+          & $LibKPScript /KPScript -c:Import $outputFileKeepass -pw:([Net.NetworkCredential]::new('', $password).Password) -Format:"Bitwarden JSON" -File:$tempfile
         }else{
           & $LibKPScript /KPScript -c:Import $outputFileKeepass -pw:$credentials.GetNetworkCredential().Password -Format:"Bitwarden JSON" -File:$tempfile
         }
