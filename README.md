@@ -52,6 +52,7 @@ The directory we will need to extract files are all in `./Export/lib/`.
 2.  Download and extract the latest version of KeePass (.zip portable version), `KeePass.exe` must be in `./Export/lib/KeePass`. I encourage you to validate the [signature](https://keepass.info/integrity.html) of the file.
 3.  Download and extract the latest version of KPScript for Keepass, `KPScript.exe` must be in `./Export/lib/KeePass`. I encourage you to validate the [signature](https://keepass.info/integrity_etc.html) of the file.
 4.  Download and extract the latest version of sdelete, `sdelete64.exe` must be in `./Export/lib/KeePass`.
+5.  Create a new empty KeePass vault. The format of the vault should be KDBX 4, named `Empty.kdbx` and its password should be `.`. The file must be in `./Export/`. Be sure to use secure vault settings. This vault will be used to import your passwords and its password will be replaced by your main password.
 
 ## Usage
 
@@ -66,27 +67,6 @@ The generated encrypted files are saved at the same level as `Export`.
 ## Auto execution
 
 This script can be started automatically with the Windows task scheduler each time you connect to your session.
-
-## KeePass
-
-### Encryption
-
-The provided KeyPass Vault use this encryption parameter:
-
--   Database file encryption algorithm: ChaCha20 (256-bit key, RFC 7539)
-
-### Key transformation
-
-The provided KeePass Vault may not use the perfect Key transformation parameters that fits your needs. The provided one is created with these following parameters:
-
--   Key derivation function:   Argon2d
--   Iterations:   10
--   Memory:   512 MB
--   Parallelism:   4
-
-It generally takes ~1s to open/save KeePass.
-
-There's more details the way these parameters impact the security on [KeePass's website in the Protection against Dictionary Attacks section](https://keepass.info/help/base/security.html).
 
 ## File Lifecycle and autodelete
 
