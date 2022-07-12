@@ -42,7 +42,7 @@ The generated encrypted files are saved at the same level as `Export`.
 
 :warning: Be sure that you're using a secure trusted computer while doing a backup of your passwords.
 
-### Problems?
+### If the event of a problem or if you want to redo the authentication
 
 If you have any problem when you connect, you entered the wrong password or the script shows errors, you can reset BitwardenBackup to ask for your credentials again by deleting `Bitwarden.cred` in `/Export`.
 
