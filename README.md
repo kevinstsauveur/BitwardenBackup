@@ -58,11 +58,15 @@ The directory we will need to extract files are all in `./Export/lib/`.
 
 Simply run the `Export.ps1` script every time you want to backup your vault. It creates a new `kdbx` (KeePass Vault) and a new `json` (encrypted bitwarden's json) each time you run the script `Export.ps1`.
 
-At first, it will ask you for your Bitwarden credentials. You will need your [API Key](https://bitwarden.com/help/personal-api-key/) that you can find in your online vault's settings. Those are your OAuth 2.0 Client Credentials that will be used to authenticate. Your client_id and your client_secret will be needed. Once those are validated, your master password will be asked.
+At first, it will ask you for your Bitwarden credentials. You will need your [API Key](https://bitwarden.com/help/personal-api-key/) that you can find in your online vault's settings. Those are your OAuth 2.0 Client Credentials that will be used to authenticate. Your client_id and your client_secret will be needed. Once those are logged in, your master password will be asked.
 
 The generated encrypted files are saved at the same level as `Export`.
 
 :warning: Be sure that you're using a secure trusted computer while doing a backup of your passwords.
+
+### Problems?
+
+If you have any problem when you connect, you entered the wrong password or the script shows errors, you can reset BitwardenBackup to ask for your credentials again by deleting `Bitwarden.cred` in `/Export`.
 
 ## Auto execution
 
