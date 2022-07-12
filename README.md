@@ -32,9 +32,26 @@ For more details on how the data is stored, see [KeePass](https://keepass.info/)
 -   [KPScript](https://keepass.info/plugins.html)
 -   [Sdelete](https://docs.microsoft.com/en-us/sysinternals/downloads/sdelete)
 
+## Usage
+
+Simply run the `Export.ps1` script every time you want to backup your vault. It creates a new `kdbx` (KeePass Vault) and a new `json` (encrypted bitwarden's json) each time you run the script `Export.ps1`.
+
+At first, it will ask you for your Bitwarden credentials. You will need your [API Key](https://bitwarden.com/help/personal-api-key/) that you can find in your online vault's settings. Those are your OAuth 2.0 Client Credentials that will be used to authenticate. Your client_id and your client_secret will be needed. Once those are logged in, your master password will be asked.
+
+The generated encrypted files are saved at the same level as `Export`.
+
+:warning: Be sure that you're using a secure trusted computer while doing a backup of your passwords.
+
+### If the event of a problem or if you want to redo the authentication
+
+If you have any problem when you connect, you entered the wrong password or the script shows errors, you can reset BitwardenBackup to ask for your credentials again by deleting `Bitwarden.cred` in `/Export`.
+
 ## Installation
 
+### Bundled pack
 The Releases contains everything that’s needed. There's no need to do those steps. If you would like to do it yourself, feel free to follow those below.
+
+### Manual install
 
 The directory we will need to extract files are all in `./Export/lib/`.
 
@@ -53,16 +70,6 @@ The directory we will need to extract files are all in `./Export/lib/`.
 3.  Download and extract the latest version of KPScript for Keepass, `KPScript.exe` must be in `./Export/lib/KeePass`. I encourage you to validate the [signature](https://keepass.info/integrity_etc.html) of the file.
 4.  Download and extract the latest version of sdelete, `sdelete64.exe` must be in `./Export/lib/KeePass`.
 5.  Create a new empty KeePass vault. The format of the vault should be KDBX 4, named `Empty.kdbx` and its password should be `.`. The file must be in `./Export/`. Be sure to use secure vault settings. This vault will be used to import your passwords and its password will be replaced by your main password.
-
-## Usage
-
-Simply run the `Export.ps1` script every time you want to backup your vault. It creates a new `kdbx` (KeePass Vault) and a new `json` (encrypted bitwarden's json) each time you run the script `Export.ps1`.
-
-At first, it will ask you for your Bitwarden credentials. You will need your [API Key](https://bitwarden.com/help/personal-api-key/) that you can find in your online vault's settings. Those are your OAuth 2.0 Client Credentials that will be used to authenticate. Your client_id and your client_secret will be needed. Once those are validated, your master password will be asked.
-
-The generated encrypted files are saved at the same level as `Export`.
-
-:warning: Be sure that you're using a secure trusted computer while doing a backup of your passwords.
 
 ## Auto execution
 
