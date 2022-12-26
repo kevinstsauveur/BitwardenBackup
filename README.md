@@ -51,6 +51,7 @@ If you have any problems connecting or the script shows errors, you can reset th
 ## Installation
 
 ### Bundled pack
+
 The [Releases packages](https://github.com/kevinstsauveur/BitwardenBackup/releases) contains everything that’s needed. There's no need to do anything else. If you would like to do setup BitwardenBackup manually, feel free to follow the manual install.
 
 ### Manual install
