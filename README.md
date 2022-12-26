@@ -51,7 +51,8 @@ If you have any problems connecting or the script shows errors, you can reset th
 ## Installation
 
 ### Bundled pack
-The Releases packages contains everything that’s needed. There's no need to do anything else. If you would like to do setup BitwardenBackup manually, feel free to follow the manual install.
+
+The [Releases packages](https://github.com/kevinstsauveur/BitwardenBackup/releases) contains everything that’s needed. There's no need to do anything else. If you would like to do setup BitwardenBackup manually, feel free to follow the manual install.
 
 ### Manual install
 
@@ -67,10 +68,10 @@ The directory we will need to extract files are all in `./Export/lib/`.
         └───deleteItems
 ```
 
-1.  Download and extract the latest version of Bitwardencli, `bw.exe` must be in `./Export/lib/Bitwardencli`. I encourage you to validate the [checksum](https://github.com/bitwarden/cli/releases) of the file.
-2.  Download and extract the latest version of KeePass (.zip portable version), `KeePass.exe` must be in `./Export/lib/KeePass`. I encourage you to validate the [signature](https://keepass.info/integrity.html) of the file.
-3.  Download and extract the latest version of KPScript for Keepass, `KPScript.exe` must be in `./Export/lib/KeePass`. I encourage you to validate the [signature](https://keepass.info/integrity_etc.html) of the file.
-4.  Download and extract the latest version of sdelete, `sdelete64.exe` must be in `./Export/lib/KeePass`.
+1.  Download and extract the latest version of [Bitwardencli](https://github.com/bitwarden/clients/releases), `bw.exe` must be in `./Export/lib/Bitwardencli`. I encourage you to validate the [checksum](https://github.com/bitwarden/clients/releases) of the file.
+2.  Download and extract the latest version of [KeePass](https://keepass.info/download.html) (.zip portable version), `KeePass.exe` must be in `./Export/lib/KeePass`. I encourage you to validate the [signature](https://keepass.info/integrity.html) of the file.
+3.  Download and extract the latest version of [KPScript](https://keepass.info/plugins.html#kpscript) for Keepass, `KPScript.exe` must be in `./Export/lib/KeePass`. I encourage you to validate the [signature](https://keepass.info/integrity_etc.html) of the file.
+4.  Download and extract the latest version of [sdelete](https://learn.microsoft.com/en-us/sysinternals/downloads/sdelete), `sdelete64.exe` must be in `./Export/lib/sdelete`.
 5.  Create a new empty KeePass vault. The format of the vault should be KDBX 4, named `Empty.kdbx` and its password should be `.`. The file must be in `./Export/`. Be sure to use secure vault settings. This vault will be used to import your passwords and its password will be replaced by your main password.
 
 ## Auto execution
